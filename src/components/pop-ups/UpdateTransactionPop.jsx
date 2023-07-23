@@ -60,11 +60,11 @@ const UpdateTransactionPopUp = ({triggerElement,data}) => {
 
             if(update_transactions_by_pk.type.toLowerCase() ==="credit"){
                 dispatch(addCredit({credit : update_transactions_by_pk.amount}))
-                dispatch(removeDebit({debit:update_transactions_by_pk.amount}))
+                dispatch(removeDebit({debit:data.amount}))
             }
             else{
                 dispatch(addDebit({debit : update_transactions_by_pk.amount}))
-                dispatch(removeCredit({credit : update_transactions_by_pk.amount}))
+                dispatch(removeCredit({credit : data.amount}))
             }
             
             setAmount("");
