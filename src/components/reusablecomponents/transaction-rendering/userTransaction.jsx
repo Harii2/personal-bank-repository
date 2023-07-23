@@ -43,7 +43,7 @@ const RenderingUserTransactions = (props) => {
                         <DeleteTransactionPopUp setRecentTransactions={setRecentTransactions} triggerElement={<button className="trigger-btn">
                             <img  style={{cursor:"pointer"}} src={DeleteIcon} alt="delete-icon"/>
                             </button>}
-                            data={id}
+                            data={each}
                         />
                     </p>
                 </li>

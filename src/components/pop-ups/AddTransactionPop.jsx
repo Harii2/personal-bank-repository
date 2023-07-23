@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios"
 import { useSelector ,useDispatch} from 'react-redux';
 
-import { addTransaction } from '../../state';
+import { addTransaction ,addCredit,addDebit} from '../../state';
 
 const AddTransactionPop = ({triggerElement}) => {
     const [transactionName,setTransactionName] = useState("");
@@ -57,6 +57,16 @@ const AddTransactionPop = ({triggerElement}) => {
            dispatch(addTransaction({
             transaction : [insert_transactions_one]
            }))
+           if(type==="credit"){
+                dispatch(addCredit({
+                    credit : amount
+                }))
+           }
+           else{
+            dispatch(addDebit({
+                debit : amount
+            }))
+           }
         })
         .catch(e => {
             

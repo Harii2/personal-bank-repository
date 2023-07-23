@@ -9,13 +9,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios"
 import { useSelector,useDispatch } from 'react-redux';
 
-import { removeTransaction } from '../../state';
+import { removeTransaction,removeCredit,removeDebit } from '../../state';
 
 const DeleteTransactionPopUp = ({ triggerElement,data,setRecentTransactions}) =>{
+
     const dispatch = useDispatch()
     const userId = useSelector(s => s.loginId)
     const handleDeleteId = async(close) => {
-        const body = {"id" : data};
+        const body = {"id" : data.id};
         console.log(body)
         const headers = {
             "Content-Type" : "application/json",
@@ -24,15 +25,22 @@ const DeleteTransactionPopUp = ({ triggerElement,data,setRecentTransactions}) =>
             "x-hasura-user-id" : userId
         }
         console.log()
-       await axios.delete( `https://bursting-gelding-24.hasura.app/api/rest/delete-transaction?id=${data}`,{headers},body)
+       await axios.delete( `https://bursting-gelding-24.hasura.app/api/rest/delete-transaction?id=${data.id}`,{headers},body)
         .then(res => {
             console.log(res.data)
             dispatch(removeTransaction({
                 id:data
             }))
+            if(data.type.toLowerCase() === "credit"){
+                dispatch(removeCredit({credit : data.amount}))
+            }
+            else{
+                dispatch(removeDebit({debit:data.amount}))
+            }
             alert("Deleted Succesfully")
         })
         .catch(e => {
+            console.log(e)
             alert(e.message)
         })
         close()

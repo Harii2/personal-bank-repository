@@ -4,15 +4,40 @@ const initialState = {
     loginPerson:null,
     loginId : null,
    email : null,
-   transactions:[]
+   transactions:[],
+   credit:0,
+   debit:0
 }
 
 export const authSlice = createSlice({
     name :"user",
     initialState,
     reducers:{
+        setCredit:(state,action)=>{
+            console.log("credit:",action.payload.credit)
+            state.credit = parseInt(action.payload.credit)
+        },
+        addCredit:(state,action)=>{
+            state.credit += parseInt(action.payload.credit)
+        },
+        removeCredit:(state,action)=>{
+            if(state.credit > 0){
+                state.credit -= parseInt(action.payload.credit)
+            }
+        },
+        setDebit:(state,action)=>{
+            state.debit = parseInt(action.payload.debit)
+        },
+        addDebit:(state,action)=>{
+            state.debit += parseInt(action.payload.debit)
+        },
+        removeDebit :(state,action)=>{
+            if(state.debit > 0){
+                state.debit -= parseInt(action.payload.debit)
+            }
+        },
         setLogin:(state,action) =>{
-            console.log(action.payload.loginPerson,action.payload.loginId)
+            // console.log(action.payload.loginPerson,action.payload.loginId)
             state.loginPerson = action.payload.loginPerson;
             state.loginId = action.payload.loginId;
             state.email = action.payload.email
@@ -46,6 +71,6 @@ export const authSlice = createSlice({
     }
 })
 
-export const {setLogOut,setLogin,setTransactions,addTransaction,removeTransaction,updateTransaction} = authSlice.actions
+export const {setLogOut,setLogin,setTransactions,addTransaction,removeTransaction,updateTransaction,setCredit,setDebit,addCredit,removeCredit,addDebit,removeDebit} = authSlice.actions
 
 export default authSlice.reducer;

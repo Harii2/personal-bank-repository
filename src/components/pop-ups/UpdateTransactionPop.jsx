@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios"
 import { useDispatch, useSelector } from 'react-redux';
 import { updateTransaction } from '../../state';
+import { addCredit,removeCredit,addDebit,removeDebit } from '../../state';
 
 const UpdateTransactionPopUp = ({triggerElement,data}) => {
     
@@ -56,6 +57,15 @@ const UpdateTransactionPopUp = ({triggerElement,data}) => {
             dispatch(updateTransaction({
                 transaction : update_transactions_by_pk
             }))
+
+            if(update_transactions_by_pk.type.toLowerCase() ==="credit"){
+                dispatch(addCredit({credit : update_transactions_by_pk.amount}))
+                dispatch(removeDebit({debit:update_transactions_by_pk.amount}))
+            }
+            else{
+                dispatch(addDebit({debit : update_transactions_by_pk.amount}))
+                dispatch(removeCredit({credit : update_transactions_by_pk.amount}))
+            }
             
             setAmount("");
             setTransactionName("");

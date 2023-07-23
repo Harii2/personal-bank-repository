@@ -2,19 +2,19 @@ import "./dashboard.css"
 import credit_img from "../../credit.png"
 import debit_img from "../../debit.png"
 import RenderingUserTransactions from "../reusablecomponents/transaction-rendering/userTransaction"
-import { useEffect, useState } from "react"
+import { useEffect} from "react"
 import GroupedBarChart from "../reusablecomponents/bargraph/Bargraph"
 import axios from "axios"
 import AddTransactionPop from "../pop-ups/AddTransactionPop"
-import { useSelector } from "react-redux"
-
-
+import { useSelector ,useDispatch} from "react-redux"
+import { setCredit,setDebit } from "../../state"
 
 
 const UserDashBoard = () => {
+    const dispatch = useDispatch()
     const recentTransaction = useSelector(state => state.transactions)
-    const [credit,setCredit] = useState("");
-    const [debit,setDebit] = useState("")
+    const credit = useSelector(state => state.credit);
+    const debit = useSelector(state => state.debit)
     
     const user_id = useSelector(state => state.loginId)
 
@@ -44,10 +44,13 @@ const UserDashBoard = () => {
                 else{
                     debit = debit + each.sum;
                 }
-                return ;
+                return each;
             })
-            setDebit(debit )
-            setCredit(credit )
+            console.log(credit,debit)
+            dispatch(setCredit({
+                credit
+            }))
+            dispatch(setDebit({debit}))
         })
         .catch(e => {
             console.log(e)
