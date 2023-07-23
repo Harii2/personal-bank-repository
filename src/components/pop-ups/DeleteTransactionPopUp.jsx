@@ -7,11 +7,12 @@ import DeleteImg from "../../danger.png"
 
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios"
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 
+import { removeTransaction } from '../../state';
 
-const DeleteTransactionPopUp = ({ triggerElement,data,onSuccess}) =>{
-    // console.log(onSuccess)
+const DeleteTransactionPopUp = ({ triggerElement,data,setRecentTransactions}) =>{
+    const dispatch = useDispatch()
     const userId = useSelector(s => s.loginId)
     const handleDeleteId = async(close) => {
         const body = {"id" : data};
@@ -26,9 +27,14 @@ const DeleteTransactionPopUp = ({ triggerElement,data,onSuccess}) =>{
        await axios.delete( `https://bursting-gelding-24.hasura.app/api/rest/delete-transaction?id=${data}`,{headers},body)
         .then(res => {
             console.log(res.data)
+            dispatch(removeTransaction({
+                id:data
+            }))
             alert("Deleted Succesfully")
         })
-        .catch(e => console.log(e))
+        .catch(e => {
+            alert(e.message)
+        })
         close()
     }
     

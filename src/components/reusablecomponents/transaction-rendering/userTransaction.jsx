@@ -13,6 +13,7 @@ import UpdateTransactionPopUp from "../../pop-ups/UpdateTransactionPop";
 const RenderingUserTransactions = (props) => {
     const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
     const {each} = props
+    const {setRecentTransactions} = props
     const {id,transaction_name,type,category,date,amount} = each;
 
     const formatDate = (date) =>{
@@ -39,7 +40,7 @@ const RenderingUserTransactions = (props) => {
                                 data={each}
                         />
                         
-                        <DeleteTransactionPopUp triggerElement={<button className="trigger-btn">
+                        <DeleteTransactionPopUp setRecentTransactions={setRecentTransactions} triggerElement={<button className="trigger-btn">
                             <img  style={{cursor:"pointer"}} src={DeleteIcon} alt="delete-icon"/>
                             </button>}
                             data={id}

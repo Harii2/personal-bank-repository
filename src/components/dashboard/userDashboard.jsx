@@ -12,15 +12,15 @@ import { useSelector } from "react-redux"
 
 
 const UserDashBoard = () => {
+    const recentTransaction = useSelector(state => state.transactions)
     const [credit,setCredit] = useState("");
     const [debit,setDebit] = useState("")
-    const [recentTransaction,setRecentTransactions] = useState([])
+    
     const user_id = useSelector(state => state.loginId)
 
     useEffect(()=>{
         getTotalCreditAndDebit()
-        getRecentTransactions()
-    })
+    },[])
 
   
     const headers = {
@@ -54,19 +54,7 @@ const UserDashBoard = () => {
         })
     }
 
-    const getRecentTransactions = async() => { 
-        axios.get("https://bursting-gelding-24.hasura.app/api/rest/all-transactions?limit=1000000&offset=0",{headers})
-        .then( res=>{
-            const {transactions} = res.data;
-            const reverseTransactions = transactions.slice().reverse();
-            setRecentTransactions(reverseTransactions.slice(0,3))
-            // console.log(reverseTransactions.slice(0,3))
-        }
-        )
-        .catch(e => {
-            console.log(e)
-        })
-    }
+    
 
     
     return(
@@ -103,7 +91,7 @@ const UserDashBoard = () => {
                 <h2 className="last-trasaction-tag">Last Transaction</h2>
                 <div className="rendering-transaction-container">
                     {
-                        recentTransaction && recentTransaction.map(each => <RenderingUserTransactions key={each.id} each = {each} mode="user"/>)
+                        recentTransaction && recentTransaction.slice(0,3).map(each => <RenderingUserTransactions  key={each.id} each = {each} mode="user"/>)
                     }
                 </div> 
 

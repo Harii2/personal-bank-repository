@@ -8,6 +8,7 @@ import { useSelector } from "react-redux"
 const UserProfile = () => {
     const [user,setUser] = useState({})
     const userId = useSelector(state => state.loginId);
+    const isAdmin = useSelector(state => state.loginPerson) === "admin"
 
     useEffect(()=>{
         getUserDetails()
@@ -26,16 +27,21 @@ const UserProfile = () => {
             setUser(users[0]);
             
         })
-        .catch(e => console.log(e))
+        .catch(e => {
+            alert(e.message)
+        })
     }
     return(
         <div className="user-main-container">
             <div className="topbar-container">
                 <p className="account-name">Accounts</p>
-                <AddTransactionPop
+                {
+                    isAdmin ? <button className="add-transactio-btn">Add Transaction +</button> : <AddTransactionPop
                     triggerElement={<button className="add-transactio-btn">Add Transaction +</button>}
                     data={1}
                 />
+                }
+                
             </div>
 
             <div className="profile-container">

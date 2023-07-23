@@ -4,7 +4,9 @@ import './Popup.css';
 import CloseIcon from '@mui/icons-material/Close';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios"
-import { useSelector } from 'react-redux';
+import { useSelector ,useDispatch} from 'react-redux';
+
+import { addTransaction } from '../../state';
 
 const AddTransactionPop = ({triggerElement}) => {
     const [transactionName,setTransactionName] = useState("");
@@ -14,6 +16,7 @@ const AddTransactionPop = ({triggerElement}) => {
     const [date,setDate] = useState("");
 
     const userId = useSelector(state=>state.loginId)
+    const dispatch = useDispatch()
 
     const handlePost = async(close) => {
         const body = {
@@ -50,9 +53,20 @@ const AddTransactionPop = ({triggerElement}) => {
             setCategory("")
             setType("");
             setDate("")
-            
+            const {insert_transactions_one } = res.data 
+           dispatch(addTransaction({
+            transaction : [insert_transactions_one]
+           }))
         })
-        .catch(e => console.log(e))
+        .catch(e => {
+            
+            const {response} =e 
+            const {data} = response 
+            const {error} = data
+            toast.error(error)
+            // console.log(e)
+            // console.log(e.message)
+        })
     }
 
     return(

@@ -4,7 +4,8 @@ import './Popup.css';
 import CloseIcon from '@mui/icons-material/Close';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios"
-// import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { updateTransaction } from '../../state';
 
 const UpdateTransactionPopUp = ({triggerElement,data}) => {
     
@@ -13,7 +14,7 @@ const UpdateTransactionPopUp = ({triggerElement,data}) => {
     const [category,setCategory] = useState(data.category);
     const [amount,setAmount] = useState(data.amount);
     const [date,setDate] = useState(data.date);
-    // const x = useSelector(state => state.loginId)
+    const dispatch = useDispatch()
 
     const handlePost = async() => {
         const body = {
@@ -48,14 +49,22 @@ const UpdateTransactionPopUp = ({triggerElement,data}) => {
                     progress: undefined,
                   });
             },1000);
+            console.log(res.data)
+            const {update_transactions_by_pk} = res.data ;
+            dispatch(updateTransaction({
+                transaction : update_transactions_by_pk
+            }))
+            
             setAmount("");
             setTransactionName("");
             setCategory("")
             setType("");
-            setDate("")
+            setDate("");
             
         })
-        .catch(e => console.log(e))
+        .catch(e => {
+            toast.error(e.message)
+        })
 
     }
 

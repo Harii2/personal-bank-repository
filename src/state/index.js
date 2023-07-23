@@ -4,11 +4,11 @@ const initialState = {
     loginPerson:null,
     loginId : null,
    email : null,
-   transactions : []
+   transactions:[]
 }
 
 export const authSlice = createSlice({
-    name :"auth",
+    name :"user",
     initialState,
     reducers:{
         setLogin:(state,action) =>{
@@ -22,18 +22,30 @@ export const authSlice = createSlice({
             state.loginId = null;
             state.email = null
         },
-        removeDelete:(state,action) => {
-            const updatedTransactions = state.transactions.filter((each)=>{
-                if(each.id !== action.payload.id){
-                    return each
+        setTransactions : (state,action) => {
+            state.transactions = action.payload.transactions
+        },
+        addTransaction : (state,action) => {
+            state.transactions = [...action.payload.transaction,...state.transactions]
+        },
+        updateTransaction:(state,action)=>{
+            // console.log(action.payload.transaction)
+            const filteredTransactions = state.transactions.map(each => {
+                if(each.id === action.payload.transaction.id){
+                    return action.payload.transaction;
                 }
-                return null
+                return each ;
             })
-            state.transactions = updatedTransactions
+            state.transactions = filteredTransactions 
+        },
+        removeTransaction:(state,action) => {
+            const updatedTransactions = state.transactions.filter(each => each.id !== action.payload.id)
+            state.transactions = updatedTransactions ;
+            // console.log(state.transactions)
         }
     }
 })
 
-export const {setLogOut,setLogin} = authSlice.actions
+export const {setLogOut,setLogin,setTransactions,addTransaction,removeTransaction,updateTransaction} = authSlice.actions
 
 export default authSlice.reducer;

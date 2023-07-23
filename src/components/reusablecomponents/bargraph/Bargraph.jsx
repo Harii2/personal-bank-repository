@@ -66,7 +66,7 @@ const GroupedBarChart = () => {
     
   }
   
-  console.log(data)
+  // console.log(data)
   return (
     <div className='chart-container'>
       <BarChart width={1000} height={600}  data={data}>
