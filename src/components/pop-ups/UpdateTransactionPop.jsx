@@ -63,6 +63,7 @@ const UpdateTransactionPopUp = ({triggerElement,data}) => {
             
         })
         .catch(e => {
+            console.log(e)
             toast.error(e.message)
         })
 
