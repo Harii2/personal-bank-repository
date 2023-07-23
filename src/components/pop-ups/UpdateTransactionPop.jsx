@@ -4,7 +4,7 @@ import './Popup.css';
 import CloseIcon from '@mui/icons-material/Close';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateTransaction } from '../../state';
 
 const UpdateTransactionPopUp = ({triggerElement,data}) => {
@@ -15,6 +15,8 @@ const UpdateTransactionPopUp = ({triggerElement,data}) => {
     const [amount,setAmount] = useState(data.amount);
     const [date,setDate] = useState(data.date);
     const dispatch = useDispatch()
+
+    const userId = useSelector(state => state.loginId)
 
     const handlePost = async() => {
         const body = {
@@ -31,7 +33,7 @@ const UpdateTransactionPopUp = ({triggerElement,data}) => {
             "Content-Type" : "application/json",
             "x-hasura-admin-secret" : "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
             "x-hasura-role" : "user",
-            "x-hasura-user-id" : data.user_id
+            "x-hasura-user-id" : userId
         }
         
         // console.log(headers,x)
