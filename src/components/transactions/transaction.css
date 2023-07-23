@@ -1,0 +1,128 @@
+.transaction-main-container{
+    width: 100%;
+    
+}
+
+.type-tab-container{
+    display: flex;
+    gap: 1rem;
+}
+
+.transaction-tag{
+    text-align: start;
+    color: #343C6A;
+    font-size: 28px;
+}
+
+.transactions-rendering-elements-container{
+    padding: 20px;
+}
+
+.heading-container-of-user{
+    display: flex;
+    justify-content: space-between
+}
+
+.transactions-heading-elements-container{
+    background-color: white;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.add-transactio-btn{
+    width: 150px;
+    height: 35px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: rgb(88, 90, 236);
+    color: white;
+    cursor: pointer;
+}
+
+.btn-transaction-top-container{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+}
+
+.transactions-items-container{
+    width: 100%;
+        padding: 10px;
+        background-color: white;
+        border-radius: 20px;
+}
+
+.transactions-and-acc-container{
+    padding: 20px;
+}
+.head-container{
+    display: flex;
+    justify-content: space-between;
+    gap: "10%";
+    
+}
+
+.name-head-tag{
+    color: #343C6A;
+    font-size: 16px;
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+.page-buttons-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 20px;
+}
+
+.page-button-main{
+    background-color: green;
+    color: white;
+    border: 0px solid green;
+    width: 30px;
+    cursor: pointer;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.page-button{
+    background-color: green;
+    color: white;
+    border: 0px solid green;
+    align-self: center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.head-tag{
+    color: #505887;
+    font-size: 16px;
+    /* width: 18%; */
+    font-weight: 600;
+    text-align: start;
+    margin-left: 20px;
+}
+
+.tab-tag{
+    color: #718EBF;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.transaction-top-container{
+    background-color: white;
+    border: 1px solid white;
+    box-sizing: content-box;
+    padding-left: 20px;
+}
+
+.active-tab{
+    color: #2D60FF;
+    border-bottom: 2px solid #2D60FF;
+    border-radius: 2px;
+}
+

@@ -1,0 +1,66 @@
+.icon-name-container{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    width: 25%;
+}
+
+.icon-name-container-user{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.trigger-btn{
+    border: 0px solid white;
+    background-color: transparent;
+}
+
+.rendering-div{
+    display: flex;
+   justify-content: space-between; 
+}
+
+.img-container{
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+}
+
+.green-tag{
+    color: green;
+}
+
+.arrow{
+    height: 40px;
+    color: green;
+}
+
+.amount-tag{
+    color: rgb(235, 47, 47);
+}
+
+.hr-line{
+    color: rgb(217, 214, 214);
+}
+
+.user_name_tag{
+    color: #505887;
+    font-size: 16px;   
+}
+
+.catergory-type-tag{
+    color: #505887;
+    font-size: 16px;
+    font-weight: 500;
+    width: 18%;
+    text-align: start;
+}
+
+.catergory-type-tag-user{
+    color: #505887;
+    font-size: 16px;
+    font-weight: 500;
+    /* width: 18%; */
+    text-align: start;
+}

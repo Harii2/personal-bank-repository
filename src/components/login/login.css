@@ -1,0 +1,65 @@
+
+.login-main-div{
+    display: flex;
+    justify-content: center;
+}
+
+.radio-div{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.email-pw-div{
+    background-color: #e4e8f7;
+    border: 0px;
+    border-radius: 20px;
+    width: 400px;
+    padding: 20px;
+    margin-top: 200px;
+}
+
+.error-msg{
+    font-size: 14px;
+    color: red;
+}
+
+.submit-button{
+    width: 120px;
+    color: white;
+    height: 40px;
+    border: 0px;
+    background-color: rgb(2, 82, 255);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.button-div{
+    display: flex;
+    justify-content: center;
+}
+
+.email-pw-inner-div{
+    margin-bottom: 20px;
+}
+
+h2{
+    color: #9facdd;
+    text-align: center;
+}
+
+.label{
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
+    margin-bottom: 4px;
+}
+
+.input{
+    font-size: smaller;
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px gray solid;
+    margin-bottom: 10px;
+}
