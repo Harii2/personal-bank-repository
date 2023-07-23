@@ -107,7 +107,9 @@ const UserDashBoard = () => {
                     }
                 </div> 
 
-                <GroupedBarChart />
+                <div className="bar-graph-container">
+                     <GroupedBarChart />
+                </div>
             </div>
 
         </div>
