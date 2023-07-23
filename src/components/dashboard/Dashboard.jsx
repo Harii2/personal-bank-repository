@@ -95,7 +95,9 @@ const Dashboard = () =>{
                     }
                 </div> 
 
-                <GroupedBarChart/>
+                <div className="bar-graph-container">
+                     <GroupedBarChart />
+                </div>
             </div>
         </div>
     )
