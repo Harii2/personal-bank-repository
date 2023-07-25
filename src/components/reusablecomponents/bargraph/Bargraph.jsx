@@ -86,7 +86,7 @@ const GroupedBarChart = () => {
   // console.log(data)
   return (
     <div className='chart-container'>
-      <BarChart className='bargraph' width={1000} height={400}  data={data}>
+      <BarChart className='bargraph' width={900} height={400}  data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
         <YAxis />

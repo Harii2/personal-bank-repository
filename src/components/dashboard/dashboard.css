@@ -91,7 +91,7 @@
     display: none;
 }
 
-@media (min-width:1000px){
+@media (min-width:950px){
         .credit-img{
             height: 160px;
             width: 160px;
