@@ -46,7 +46,7 @@ const UserDashBoard = () => {
                 }
                 return each;
             })
-            console.log(credit,debit)
+            // console.log(credit,debit)
             dispatch(setCredit({
                 credit
             }))

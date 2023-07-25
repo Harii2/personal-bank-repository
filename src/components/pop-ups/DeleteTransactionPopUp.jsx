@@ -27,10 +27,11 @@ const DeleteTransactionPopUp = ({ triggerElement,data,setRecentTransactions}) =>
         console.log()
        await axios.delete( `https://bursting-gelding-24.hasura.app/api/rest/delete-transaction?id=${data.id}`,{headers},body)
         .then(res => {
-            console.log(res.data)
+            // console.log("deleted",data.id)
             dispatch(removeTransaction({
-                id:data
+                id:data.id
             }))
+            // console.log(res.data)
             if(data.type.toLowerCase() === "credit"){
                 dispatch(removeCredit({credit : data.amount}))
             }

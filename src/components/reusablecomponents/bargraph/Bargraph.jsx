@@ -45,7 +45,7 @@ const GroupedBarChart = () => {
       const {last_7_days_transactions_credit_debit_totals} = res.data;
       // console.log(last7DaysArray)
       let lastDays = []
-      console.log(res.data)
+      // console.log(res.data)
       for(let each of last_7_days_transactions_credit_debit_totals){
         const formatted_date = formatDate(each.date);
         const index = lastDays.find(item => item.date === formatted_date);

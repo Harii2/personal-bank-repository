@@ -14,7 +14,7 @@ export const authSlice = createSlice({
     initialState,
     reducers:{
         setCredit:(state,action)=>{
-            console.log("credit:",action.payload.credit)
+            // console.log("credit:",action.payload.credit)
             state.credit = parseInt(action.payload.credit)
         },
         addCredit:(state,action)=>{
@@ -64,6 +64,7 @@ export const authSlice = createSlice({
             state.transactions = filteredTransactions 
         },
         removeTransaction:(state,action) => {
+            // console.log("state removed id is ",action.payload.id)
             const updatedTransactions = state.transactions.filter(each => each.id !== action.payload.id)
             state.transactions = updatedTransactions ;
             // console.log(state.transactions)

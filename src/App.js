@@ -9,7 +9,7 @@ import UserHome from "./components/home/UserHome";
 function App(){
     const isAuth = Boolean(useSelector((state) => state.loginId));
     const isAdmin = Boolean(useSelector((state) => state.loginPerson === "admin"))
-    console.log(isAuth,isAdmin)
+    // console.log(isAuth,isAdmin)
     
     return(
         <BrowserRouter>
