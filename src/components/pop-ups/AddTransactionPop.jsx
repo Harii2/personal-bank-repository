@@ -114,7 +114,8 @@ const AddTransactionPop = ({triggerElement}) => {
                         <option value="Aha Subscription">Aha Subscription</option>
                         <option value="Groceries">Groceries</option>
                         <option value="Movies">Movies</option>
-                        <option value="Shopping">Barber</option>
+                        <option value="Friends">Friends</option>
+                        <option value="Others">Others</option>
                     </select>
                 </div>
 

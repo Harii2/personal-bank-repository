@@ -2,12 +2,20 @@
 .login-main-div{
     display: flex;
     justify-content: center;
+    background-image: linear-gradient(to left,pink,white);
+    height: 100vh;
 }
 
 .radio-div{
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
+}
+
+.heading{
+    color: pink;
+    font-size: 24px;
+    text-align: center;
 }
 
 .email-pw-div{
@@ -17,6 +25,7 @@
     width: 400px;
     padding: 20px;
     margin-top: 200px;
+    height: 450px;
 }
 
 .error-msg{

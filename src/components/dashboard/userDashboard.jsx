@@ -99,7 +99,7 @@ const UserDashBoard = () => {
                 </div> 
 
                 <div className="bar-graph-container">
-                     <GroupedBarChart />
+                    <GroupedBarChart />
                 </div>
             </div>
 

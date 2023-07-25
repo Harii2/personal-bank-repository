@@ -115,7 +115,8 @@ const UpdateTransactionPopUp = ({triggerElement,data}) => {
                         <option value="Aha Subscription">Aha Subscription</option>
                         <option value="Groceries">Groceries</option>
                         <option value="Movies">Movies</option>
-                        <option value="Shopping">Shopping</option>
+                        <option value="Friends">Friends</option>
+                        <option value="Others">Others</option>
                     </select>
                 </div>
 

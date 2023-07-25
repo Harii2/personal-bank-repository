@@ -61,6 +61,7 @@ const Login = () =>{
         <div className="login-main-div">
             <ToastContainer/>
                 <div className="email-pw-div">
+                    <h1 className="heading"> Welocome to Personal account manager</h1>
                     <h2>Login Form</h2>
                     <div>
                         <div className="radio-div">    

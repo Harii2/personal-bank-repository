@@ -6,11 +6,10 @@ import { useSelector } from 'react-redux';
 
 
 
-let currentDate = new Date();
 
-let last7DaysArray = [];
 
-function formatDate(date) {
+function formatDate(dates) {
+  const date = new Date(dates)
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
@@ -18,14 +17,9 @@ function formatDate(date) {
 }
 
 
-for (let i = 0; i < 7; i++) {
-  last7DaysArray.push({ date: formatDate(currentDate),credit:0,debit:0 });
-  currentDate.setDate(currentDate.getDate() - 1);
-}
-
 const GroupedBarChart = () => {
   const isAdmin = Boolean(useSelector((state) => state.loginPerson === "admin"))
-  const [data,setData] = useState(last7DaysArray)
+  const [data,setData] = useState([])
   const user_id = useSelector(s => s.loginId)
 
   useEffect(()=>{
@@ -49,17 +43,40 @@ const GroupedBarChart = () => {
   axios.get("https://bursting-gelding-24.hasura.app/api/rest/daywise-totals-7-days",{headers})
   .then(res => {
       const {last_7_days_transactions_credit_debit_totals} = res.data;
-      const curr_Date = new Date()
+      // console.log(last7DaysArray)
+      let lastDays = []
+      console.log(res.data)
       for(let each of last_7_days_transactions_credit_debit_totals){
-        const each_date = new Date(each.date);
-        if(each.type.toLowerCase() === "credit"){
-          last7DaysArray[curr_Date.getDate() - each_date.getDate()].credit += each.sum ;
+        const formatted_date = formatDate(each.date);
+        const index = lastDays.find(item => item.date === formatted_date);
+        if(index >= 0){
+           if(each.type.toLowerCase() === "credit"){
+              lastDays[index].credit += each.sum
+           }
+           else{
+            lastDays[index].debit += each.sum;
+           }
         }
         else{
-        last7DaysArray[curr_Date.getDate() - each_date.getDate()].debit += each.sum;
+          let debit =0
+          let credit = 0;
+
+            if(each.type.toLowerCase() === "credit"){
+              credit = each.sum
+          }
+          else{
+            debit = each.sum;
+          }
+          
+          const newObj = {
+            date : formatted_date,
+            debit,credit
+          };
+          lastDays.push(newObj)
         }
-        setData(last7DaysArray)
       }
+      // console.log(lastDays)
+      setData(lastDays);
 
   })
   .catch(e => console.log(e))
@@ -69,7 +86,7 @@ const GroupedBarChart = () => {
   // console.log(data)
   return (
     <div className='chart-container'>
-      <BarChart width={1000} height={600}  data={data}>
+      <BarChart className='bargraph' width={1000} height={400}  data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
         <YAxis />
